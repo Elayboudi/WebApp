@@ -41,7 +41,7 @@ function toggleText(targetId, buttonToShow) {
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <title>EduWell - Education HTML5 Template</title>
+    <title>healthCare</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -83,7 +83,7 @@ https://templatemo.com/tm-573-eduwell
                        
                           <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                           <li class="scroll-to-section"><a href="#services">Services</a></li>
-                          <li class="scroll-to-section"><a href="#courses">About Endometriosis</a></li>
+                          <li class="scroll-to-section"><a href="#testimonials">About Endometriosis</a></li>
                           
                              <% if (user == null) { %> 
                              <li class="has-sub"><a href="javascript:void(0)">Wanna Know How?</a>
@@ -99,8 +99,8 @@ https://templatemo.com/tm-573-eduwell
                               </li>
                               <% } %>
                           
-                          <li class="scroll-to-section"><a href="#testimonials">Informations</a></li> 
-                          <li class="scroll-to-section"><a href="#contact-section">Contact Us</a></li> 
+                          <li class="scroll-to-section"><a href="#simple-cta">Informations</a></li> 
+                          <li ><a href="ViewBlogsServlet">Our Blogs</a></li> 
                       </ul>        
                       <a class='menu-trigger'>
                           <span>Menu</span>
@@ -121,13 +121,20 @@ https://templatemo.com/tm-573-eduwell
           <div class="header-text">
           <% if (user == null) { %> 
            <h6>Welcome to our web application</h6>
-           <% } else { %>
-            <h6>Welcome to our web application <%= ((User) session.getAttribute("user")).getusername() %>!</h6>
-            <% } %>
-            <h2>Where Women Can Combate  <em>The Endometriosis !</em></h2>
+           <h2>Where Women Can Combate  <em>The Endometriosis !</em></h2>
             <div class="main-button-gradient">
           <a href="Signup.jsp">Join Us Now!</a>
+          
             </div>
+           <% } else { %>
+            <h6>Welcome to our web application <%= ((User) session.getAttribute("user")).getusername() %>!</h6>
+           <h2>Where Women Can Combate  <em>The Endometriosis !</em></h2>
+             <div class="main-button-gradient">
+          <a href="ProcessSuiviFormServlet">Voir mes suivis </a>
+            </div>
+            <% } %>
+            
+           
           </div>
         </div>
         <div class="col-lg-6">
@@ -139,13 +146,13 @@ https://templatemo.com/tm-573-eduwell
     </div>
   </section>
   <!-- ***** Main Banner Area End ***** -->
-
+ <!-- 
   <section class="services" id="services">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading">
-          <!--  
+          
             <h6>Our Services</h6>
             <h4>Provided <em>Services</em></h4>
           </div>
@@ -271,21 +278,32 @@ https://templatemo.com/tm-573-eduwell
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
-            <h6>OUR COURSES</h6>
-            <h4>What You Can <em>Learn</em></h4>
-            <p>You just think about TemplateMo whenever you need free CSS templates for your business website</p>
+            <h6>NOS PROPOSITIONS</h6>
+            <h4>Vous pouvez recevoir un guide par le remplissage d'un <em>Questionnaire de diagostique</em></h4>
+            <% if (user != null) { %>
+         
+         <div class="main-button-gradient">
+          <a href="diagnosticForm.jsp">Formulaire de diagnostique</a>
+            </div>
+           <br>
+             <div class="main-button-gradient">
+          <a href="suivi.jsp">Formulaire de Suivi </a>
+            </div>
+            <%} %>
           </div>
         </div>
+       
         <div class="col-lg-12">
           <div class="naccs">
             <div class="tabs">
               <div class="row">
                 <div class="col-lg-3">
                   <div class="menu">
-                    <div class="active gradient-border"><span>Web Development</span></div>
-                    <div class="gradient-border"><span>Graphic Design</span></div>
-                    <div class="gradient-border"><span>Web Design</span></div>
-                    <div class="gradient-border"><span>WordPress</span></div>
+                    <div class="active gradient-border"><span>Sensibilisation et Éducation</span></div>
+                    <div class="gradient-border"><span>Suivi des Symptômes</span></div>
+                    <div class="gradient-border"><span>Gestion du Traitement</span></div>
+                    <div class="gradient-border"><span>Soutien Communautaire</span></div>
+                    
                   </div>
                 </div>
                 <div class="col-lg-9">
@@ -293,73 +311,58 @@ https://templatemo.com/tm-573-eduwell
                     <li class="active">
                       <div>
                         <div class="left-image">
-                          <img src="assets/images/courses-01.jpg" alt="">
-                          <div class="price"><h6>$128</h6></div>
+                          <img src="assets/images/endo.jpg" alt="">
+                          
                         </div>
                         <div class="right-content">
-                          <h4>Web Development</h4>
-                          <p>Did you know that you can visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">TooCSS website</a> for latest listing of HTML templates and a variety of useful templates. 
-                          <br><br>You just need to go and visit that website right now. IF you have any suggestion or comment about this template, you can feel free to go to contact page for our email address.</p>
-                          <span>36 Hours</span>
-                          <span>4 Weeks</span>
-                          <span class="last-span">3 Certificates</span>
-                          <div class="text-button">
-                            <a href="contact-us.html">Subscribe Course</a>
-                          </div>
+                          <h4>Sensibilisation et Éducation</h4>
+                          <p>Une application peut fournir des informations détaillées sur l'endométriose, sensibilisant ainsi les utilisateurs à la maladie. Elle peut également offrir des ressources éducatives pour aider les utilisateurs à comprendre les symptômes, les options de traitement et les conseils pour gérer la maladie.
+                         <p>Les applications peuvent permettre aux utilisateurs de suivre leurs symptômes quotidiens, ce qui peut aider les professionnels de la santé à mieux comprendre l'évolution de la maladie. Cela peut également aider les patients à identifier des schémas ou des déclencheurs potentiels.</p>
+                          
+                          <br><br></p>
+                         
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image" >
+                          <img src="assets/images/endo.jpg" alt="">
+                          
+                        </div>
+                        <div class="right-content">
+                          <h4>Suivi des Symptômes</h4>
+                          <p>Les applications peuvent permettre aux utilisateurs de suivre leurs symptômes quotidiens, ce qui peut aider les professionnels de la santé à mieux comprendre l'évolution de la maladie. Cela peut également aider les patients à identifier des schémas ou des déclencheurs potentiels.</p>
+                          <p>Les applications peuvent permettre aux utilisateurs de suivre leurs symptômes quotidiens, ce qui peut aider les professionnels de la santé à mieux comprendre l'évolution de la maladie. Cela peut également aider les patients à identifier des schémas ou des déclencheurs potentiels.</p>
+                          
                         </div>
                       </div>
                     </li>
                     <li>
                       <div>
                         <div class="left-image">
-                          <img src="assets/images/courses-02.jpg" alt="">
-                          <div class="price"><h6>$156</h6></div>
+                          <img src="assets/images/endo.jpg" alt="">
+                          
                         </div>
                         <div class="right-content">
-                          <h4>Creative Graphic Design</h4>
-                          <p>You are not allowed to redistribute this template ZIP file on any other website without a permission from us.<br><br>There are some unethical people on this world copied and reposted our templates without any permission from us. Their Karma will hit them really hard. Yeah!</p>
-                          <span>48 Hours</span>
-                          <span>6 Weeks</span>
-                          <span class="last-span">1 Certificate</span>
-                          <div class="text-button">
-                            <a href="contact-us.html">Subscribe Course</a>
-                          </div>
+                          <h4>Gestion du Traitement</h4>
+                          <p>L'application peut inclure des fonctionnalités pour suivre les traitements prescrits, les médicaments et les rendez-vous médicaux. Cela peut aider à assurer une gestion plus efficace du traitement et à favoriser la collaboration entre les patients et les professionnels de la santé.</p>
+                          <p>Les applications peuvent permettre aux utilisateurs de suivre leurs symptômes quotidiens, ce qui peut aider les professionnels de la santé à mieux comprendre l'évolution de la maladie. Cela peut également aider les patients à identifier des schémas ou des déclencheurs potentiels.</p>
+                          
                         </div>
                       </div>
                     </li>
                     <li>
                       <div>
                         <div class="left-image">
-                          <img src="assets/images/courses-03.jpg" alt="">
-                          <div class="price"><h6>$184</h6></div>
+                          <img src="assets/images/endo.jpg" alt="">
+                          
                         </div>
                         <div class="right-content">
-                          <h4>Web Design</h4>
-                          <p>Quinoa roof party squid prism sustainable letterpress cray hammock tumeric man bun mixtape tofu subway tile cronut. Deep v ennui subway tile organic seitan.<br><br>Kogi VHS freegan bicycle rights try-hard green juice probably haven't heard of them cliche la croix af chillwave.</p>
-                          <span>28 Hours</span>
-                          <span>4 Weeks</span>
-                          <span class="last-span">1 Certificate</span>
-                          <div class="text-button">
-                            <a href="contact-us.html">Subscribe Course</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="left-image">
-                          <img src="assets/images/courses-04.jpg" alt="">
-                          <div class="price"><h6>$76</h6></div>
-                        </div>
-                        <div class="right-content">
-                          <h4>WordPress Introduction</h4>
-                          <p>Quinoa roof party squid prism sustainable letterpress cray hammock tumeric man bun mixtape tofu subway tile cronut. Deep v ennui subway tile organic seitan.<br><br>Kogi VHS freegan bicycle rights try-hard green juice probably haven't heard of them cliche la croix af chillwave.</p>
-                          <span>48 Hours</span>
-                          <span>4 Weeks</span>
-                          <span class="last-span">2 Certificates</span>
-                          <div class="text-button">
-                            <a href="contact-us.html">Subscribe Course</a>
-                          </div>
+                          <h4>Soutien Communautaire</h4>
+                         <p>Les applications peuvent permettre aux utilisateurs de suivre leurs symptômes quotidiens, ce qui peut aider les professionnels de la santé à mieux comprendre l'évolution de la maladie. Cela peut également aider les patients à identifier des schémas ou des déclencheurs potentiels.</p>
+                          <p>Les applications peuvent permettre aux utilisateurs de suivre leurs symptômes quotidiens, ce qui peut aider les professionnels de la santé à mieux comprendre l'évolution de la maladie. Cela peut également aider les patients à identifier des schémas ou des déclencheurs potentiels.</p>
+                          
                         </div>
                       </div>
                       </li>
@@ -373,21 +376,33 @@ https://templatemo.com/tm-573-eduwell
     </div>
   </section>
 
-  <section class="simple-cta">
+  <section class="simple-cta" id="simple-cta">
     <div class="container">
       <div class="row">
         <div class="col-lg-5 offset-lg-1">
           <div class="left-image">
-            <img src="assets/images/cta-left-image.png" alt="">
+            <img src="assets/images/fartello.jpg" alt="">
           </div>
         </div>
         <div class="col-lg-5 align-self-center">
-          <h6>Get the sale right now!</h6>
-          <h4>Up to 50% OFF For 1+ courses</h4>
-          <p>Kogi VHS freegan bicycle rights try-hard green juice probably haven't heard of them cliche la croix af chillwave.</p>
-          <div class="white-button">
-            <a href="contact-us.html">View Courses</a>
+          <h6>Qu'offrons-nous!</h6>
+          
+          <p>Notre application s'engage à prendre soin de votre santé en offrant une solution complète pour le suivi et la gestion de l'endométriose, une maladie qui peut avoir des conséquences sérieuses sur le bien-être des individus. Compte tenu du caractère potentiellement dangereux de l'endométriose, il est essentiel de bénéficier d'un suivi régulier et adapté pour favoriser la guérison. Notre application vous offre un accompagnement personnalisé, vous permettant de suivre facilement l'évolution de votre santé, de gérer les symptômes et de collaborer étroitement avec les professionnels de la santé. Nous sommes déterminés à contribuer à votre bien-être et à vous offrir les outils nécessaires pour prendre en charge votre santé gynécologique de manière proactive.</p>
+          <% if (user != null) { %>
+          <h6>Joindre notre communauté!</h6>
+         <div class="white-button">
+            <a href="publish_blog.jsp">Publier Blog</a>
           </div>
+          <br>
+          <div class="white-button">
+            <a href="ViewBlogsServlet">Show Blogs</a>
+          </div>
+           <br>
+          <div class="white-button">
+            <a href="UserBlogsServlet">Vos Blogs</a>
+          </div>
+            <%} %>
+          
         </div>
       </div>
     </div>
@@ -408,8 +423,6 @@ https://templatemo.com/tm-573-eduwell
             <span>Qu'est-ce que l'endométriose ?</span>
                 
               <p>“L'endometriose est une affection dans laquelle des tissus similaires à la muqueuse de l'utérus sont également présents ailleurs dans le corps, principalement dans la cavité abdominale.”</p>
-                
-                <img src="assets/images/quote.png" alt="">
             </div>
             <div class="item">
     <span>Quels facteurs peuvent augmenter mes chances de souffrir d'endométriose ?</span>
@@ -433,7 +446,7 @@ https://templatemo.com/tm-573-eduwell
     </p>
     <span class="read-more"  onclick="toggleText('fullText', 'show-less')">Read More</span>
      <span class="show-less" onclick="toggleText('shortText', 'read-more')">Show Less</span>
-    <img src="assets/images/quote.png" alt="">
+    
 </div>
 
 
@@ -462,46 +475,13 @@ https://templatemo.com/tm-573-eduwell
 
 <b>Saignements menstruels abondants ou irréguliers :</b> Des saignements menstruels plus abondants que la normale ou des cycles menstruels irréguliers peuvent être observés.
     </p>
-    <span class="read-more"  onclick="toggleText('fullText', 'show-less')">Read More</span>
-     <span class="show-less" onclick="toggleText('shortText', 'read-more')">Show Less</span>
-    <img src="assets/images/quote.png" alt="">
-            </div>
-            <div class="item">
-              <p>“Praesent accumsan condimentum arcu, id porttitor est semper nec. Nunc diam lorem.”</p>
-                <h4>Helen Shiny</h4>
-                <span>Tech Officer</span>
-                <img src="assets/images/quote.png" alt="">
-            </div>
-            <div class="item">
-              <p>“Praesent accumsan condimentum arcu, id porttitor est semper nec. Nunc diam lorem.”</p>
-                <h4>George Soft</h4>
-                <span>Gadget Reviewer</span>
-                <img src="assets/images/quote.png" alt="">
-            </div>
-            <div class="item">
-              <p>“Praesent accumsan condimentum arcu, id porttitor est semper nec. Nunc diam lorem.”</p>
-                <h4>Andrew Hall</h4>
-                <span>Marketing Manager</span>
-                <img src="assets/images/quote.png" alt="">
-            </div>
-            <div class="item">
-              <p>“Praesent accumsan condimentum arcu, id porttitor est semper nec. Nunc diam lorem.”</p>
-                <h4>Maxi Power</h4>
-                <span>Fashion Designer</span>
-                <img src="assets/images/quote.png" alt="">
-            </div>
-            <div class="item">
-              <p>“Praesent accumsan condimentum arcu, id porttitor est semper nec. Nunc diam lorem.”</p>
-                <h4>Olivia Too</h4>
-                <span>Creative Designer</span>
-                <img src="assets/images/quote.png" alt="">
-            </div>
+    
           </div>
         </div>
       </div>
     </div>
   </section>
-
+ <!-- 
   <section class="contact-us" id="contact-section">
     <div class="container">
       <div class="row">
@@ -509,7 +489,7 @@ https://templatemo.com/tm-573-eduwell
           <div id="map">
           
             <!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7151.84524236698!2d-122.19494600413192!3d47.56605883252286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490695e625f8965%3A0xf99b055e76477def!2sNewcastle%20Beach%20Park%20Playground%2C%20Bellevue%2C%20WA%2098006%2C%20USA!5e0!3m2!1sen!2sth!4v1644335269264!5m2!1sen!2sth" width="100%" height="420px" frameborder="0" style="border:0; border-radius: 15px; position: relative; z-index: 2;" allowfullscreen=""></iframe>
+   <!--           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7151.84524236698!2d-122.19494600413192!3d47.56605883252286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490695e625f8965%3A0xf99b055e76477def!2sNewcastle%20Beach%20Park%20Playground%2C%20Bellevue%2C%20WA%2098006%2C%20USA!5e0!3m2!1sen!2sth!4v1644335269264!5m2!1sen!2sth" width="100%" height="420px" frameborder="0" style="border:0; border-radius: 15px; position: relative; z-index: 2;" allowfullscreen=""></iframe>
             <div class="row">
               <div class="col-lg-4 offset-lg-1">
                 <div class="contact-info">
@@ -583,7 +563,7 @@ https://templatemo.com/tm-573-eduwell
       </div>
     </div>
   </section>
-
+-->
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

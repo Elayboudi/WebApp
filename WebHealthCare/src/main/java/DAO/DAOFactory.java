@@ -6,7 +6,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import Form.FormDAO;
+import Form.FormDaoImpl;
 
+import Suivi.SuiviDAO;
+import Suivi.SuiviDaoImpl;
+import Form.QuestionsDAO;
+import Form.QuestionsDaoImpl;
+import Form.ResponseChoicesDAO;
+import Form.ResponseChoicesDAOImpl;
+import Blog.BlogDAO;
+import Blog.BlogDaoImpl;
 public class DAOFactory {
 
     private static final String FICHIER_PROPERTIES       = "/DAO/DAO.properties";
@@ -74,5 +84,24 @@ public class DAOFactory {
      public UserDAO getUserDAO() {
     	    return new UserDAO(this);
     	}
+     public FormDAO getFormDao() {
+         return new FormDaoImpl(this );
+     }
+     public SuiviDAO getSuiviDao() {
+         return new SuiviDaoImpl(this );
+     }
+     public QuestionsDAO getQuestionsDao() {
+         return new QuestionsDaoImpl(this );
+     }
+     public ResponseChoicesDAO getResponseChoicesDao() {
+         return new ResponseChoicesDAOImpl(this );
+     }
+    
+     public SuiviDAO getSuiviDAO() {
+    	    return new SuiviDaoImpl(this);
+    	}
+     public BlogDAO getBlogDAO() {
+ 	    return new BlogDaoImpl(this);
+ 	}
 
 }
