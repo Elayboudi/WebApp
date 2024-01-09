@@ -1,15 +1,17 @@
 package Comment;
+
 import java.util.List;
 
 public interface CommentDAO {
 
-    List<Comment> getAllCommentsByBlogId(Long blogId);
+    List<Comment> getAllCommentsByBlogId(int blogId);
 
-    Comment getCommentById(Long commentId);
+    Comment getCommentById(int commentId);
 
     void addComment(Comment comment);
 
     void updateComment(Comment comment);
 
-    void deleteComment(Long commentId);
-}
+    void deleteComment(int commentId);
+
+    List<Comment> getAllCommentsWithUsersByBlogId(int blogId);}

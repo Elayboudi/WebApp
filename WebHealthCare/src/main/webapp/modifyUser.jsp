@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Login to PainCare</title>
-    <script>
-        <% if (request.getAttribute("passwordError") != null) { %>
-            document.addEventListener("DOMContentLoaded", function() {
-                document.getElementById("password-error").style.display = "block";
-            });
-        <% } %>
-    </script>
+    <meta charset="UTF-8">
+    <title>Modifier Utilisateur</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -71,9 +66,10 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
+            margin-top: 10px; /* Ajout de marges au-dessus du bouton Home */
         }
 
-        .btn {
+        .btn, .home-btn {
             flex: 1;
             background: #FE96A0; /* Couleur rose vive */
             color: white;
@@ -82,56 +78,47 @@
             border-radius: 5px;
             font-size: 18px;
             cursor: pointer;
+            text-decoration: none; /* Ajout de cette ligne pour enlever le soulignement du lien */
+            display: inline-block;
+            text-align: center;
         }
 
-        .btn:hover {
+        .btn:hover, .home-btn:hover {
             background: #FE96A0; /* Couleur rose foncé au survol */
         }
-
-        .link {
-            text-decoration: none;
-            color: #FE96A0; /* Couleur rose vive pour les liens */
-            font-size: 16px;
-        }
-        .error-message {
-        display: block;
-    }
     </style>
 </head>
-
 <body>
     <div class="login-container">
-        <div class="logo">
-            <!-- Mettez ici votre code pour le logo -->
-            <img src="logo.png" alt="Logo PainCare">
-        </div>
+        <h2>Modifier Vos Informations</h2>
 
-        <h2 style="color: #444;">Login to <span style="color: #FE96A0;">PainCare</span></h2>
-
-        <form action="LoginServlet" method="post">
+        <form action="ModifyUserServlet" method="post">
             <div class="form-group">
                 <div class="icon-input">
                     <i class="fas fa-user"></i>
-                    <input type="text" name="username" required placeholder="Enter Your E-mail .....">
+                    <input type="text" id="username" name="username" value="${user.username}" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="icon-input">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="email" name="email" value="${user.email}" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="icon-input">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" required placeholder="Enter Your Password .....">
+                    <input type="password" id="password" name="password" value="${user.password}" required>
                 </div>
-                 </div>
-                <div class="error-message" id="password-error" style="display: none; color: red;">Mot de passe incorrect</div>
-
-           
-            <div class="btn-container">
-                <button type="submit" class="btn">Log in</button>
             </div>
-            <br>
-          
-            <br>
-            <a class="link" href="Signup.jsp">Don't have an account? Sign up</a>
+
+            <input type="submit" class="btn" value="Modifier">
         </form>
+
+        <div class="btn-container">
+            <!-- Bouton "Home" avec le même style que le bouton "Modifier" -->
+            <a href="home.jsp" class="home-btn">Home</a>
+        </div>
     </div>
 </body>
 </html>

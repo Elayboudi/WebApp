@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="Suivi.SuiviDAO, User.User, Comment.GetAllCommentsByBlogServlet" %>
+<%@ page import="Suivi.SuiviDAO, User.User, Comment.GetAllCommentsByBlogServlet,Comment.Comment" %>
 <%  User user = (User) session.getAttribute("user"); %>
+<%@ page import="DAO.UserDAO" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,9 +135,10 @@
 <br>
 <br>
     <h2>Liste des Blogs</h2>
-    
+
     <c:if test="${not empty blogs}">
         <ul class="blog-list">
+        
             <c:forEach var="blog" items="${blogs}">
                 <li class="blog-item">
                     <!-- Image à gauche -->
@@ -145,13 +148,30 @@
                         <h3 class="blog-title">Titre : ${blog.title}</h3>
                         <p class="blog-description">Description : ${blog.description}</p>
                         <p class="blog-creator">Créé par : ${blog.user.getusername()}</p>
-                        <!-- Ajoutez d'autres détails du blog si nécessaire -->
-                      
-                       <button class="action-button" onclick="location.href='GetAllCommentsByBlogServlet?blogId=${blog.getID()}'">Commentaires</button>
+                        <h3>Les commentaires:</h3>
+                        <!-- Afficher les commentaires -->
+                        <ul>
                         
+                            <c:forEach var="comment" items="${blog.comments}">
+                                <li>
+                                   <p>Posted by:  ${comment.user.username} : ${comment.getComment()}
+<br>Date: ${comment.getDate()}</p>
+  
+                                    
+                                    <!-- Ajoutez d'autres détails du commentaire si nécessaire -->
+                                </li>
+                            </c:forEach>
+                          </ul>
+         <form action="AddCommentServlet" method="post">
+            <input type="hidden" name="blogId" id="blogId" value="${blog.getID()}">
+            <textarea name="comment" id="comment" placeholder="Ajouter un commentaire" required></textarea>
+            <button type="submit">Ajouter</button>
+        </form>
+                       
+                        
+                        <!-- Ajoutez d'autres détails du blog si nécessaire -->
                     </div>
                 </li>
-                 
             </c:forEach>
         </ul>
     </c:if>

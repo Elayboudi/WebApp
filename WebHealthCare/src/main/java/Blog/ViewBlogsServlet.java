@@ -7,7 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import Comment.Comment;
 
+import Comment.CommentDAO;
 import DAO.DAOFactory;
 
 /**
@@ -32,12 +34,20 @@ public class ViewBlogsServlet extends HttpServlet {
         BlogDAO blogDAO = daoFactory.getBlogDAO();
         List<Blog> blogs = blogDAO.getAllBlogs();
 
+        // Pour chaque blog, récupérez les commentaires associés
+        CommentDAO commentDAO = daoFactory.getCommentDAO();
+        for (Blog blog : blogs) {
+            List<Comment> comments = commentDAO.getAllCommentsByBlogId(blog.getID());
+            blog.setComments(comments);
+        }
+
+
         // Stocker la liste des blogs dans l'objet de requête
         request.setAttribute("blogs", blogs);
-
+       
         // Rediriger vers la page JSP d'affichage des blogs
         request.getRequestDispatcher("viewBlogs.jsp").forward(request, response);
-	}
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

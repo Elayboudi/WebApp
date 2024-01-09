@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.List;
 
 import DAO.DAOFactory;
+import DAO.UserDAO;
+import User.User;
 
 /**
  * Servlet implementation class GetAllCommentsByBlogServlet
@@ -34,11 +36,18 @@ public class GetAllCommentsByBlogServlet extends HttpServlet {
         if (blogIdParam != null && !blogIdParam.isEmpty()) {
             try {
                 // Convertir l'ID du blog en entier
-                Long blogId = Long.parseLong(blogIdParam);
-
+                int blogId = Integer.parseInt(blogIdParam);
+               UserDAO userDAO=new UserDAO(DAOFactory.getInstance());
                 // Récupérer les commentaires du blog depuis la base de données
                 CommentDAO commentDAO = new CommentDaoImpl(DAOFactory.getInstance());
                 List<Comment> comments = commentDAO.getAllCommentsByBlogId(blogId);
+                
+                
+                // Retrieve comments with users for the specified blog
+                List<Comment> commentsWithUsers = commentDAO.getAllCommentsWithUsersByBlogId(blogId);
+
+                // Ajouter les commentaires à la requête pour les afficher dans comments.jsp
+                request.setAttribute("commentsWithUsers", commentsWithUsers);
 
                 // Ajouter les commentaires à la requête pour les afficher dans comments.jsp
                 request.setAttribute("comments", comments);

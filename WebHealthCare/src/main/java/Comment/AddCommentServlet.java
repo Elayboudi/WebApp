@@ -39,11 +39,13 @@ public class AddCommentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    String commentText = request.getParameter("newComment");
+	    String commentText = request.getParameter("comment");
 	    Integer blogId = Integer.parseInt(request.getParameter("blogId"));
 	    HttpSession session = request.getSession();
 	    User user = (User) session.getAttribute("user");
-
+	    System.out.println("Comment Text: " + commentText);
+	    System.out.println("Blog ID: " + blogId);
+	    System.out.println("User ID: " + user.getid());
 	    // Créer un objet Comment
 	    Comment comment = new Comment();
 	    comment.setComment(commentText);
@@ -55,7 +57,7 @@ public class AddCommentServlet extends HttpServlet {
 	    commentDAO.addComment(comment);
 
 	    // Rediriger vers la page des commentaires
-	    response.sendRedirect("comments.jsp?blogId=" + blogId);
+	    response.sendRedirect("ViewBlogsServlet");
 	}
 
 }

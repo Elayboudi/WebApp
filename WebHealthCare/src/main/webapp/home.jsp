@@ -82,8 +82,9 @@ https://templatemo.com/tm-573-eduwell
                       <ul class="nav">
                        
                           <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                          <li class="scroll-to-section"><a href="#services">Services</a></li>
+                          
                           <li class="scroll-to-section"><a href="#testimonials">About Endometriosis</a></li>
+                         
                           
                              <% if (user == null) { %> 
                              <li class="has-sub"><a href="javascript:void(0)">Wanna Know How?</a>
@@ -97,6 +98,7 @@ https://templatemo.com/tm-573-eduwell
                               <li >
                               <a href="LogoutServlet">Log Out</a>
                               </li>
+                              <li ><a href="ModifyUserServlet">Profil</a></li>
                               <% } %>
                           
                           <li class="scroll-to-section"><a href="#simple-cta">Informations</a></li> 
@@ -289,6 +291,7 @@ https://templatemo.com/tm-573-eduwell
              <div class="main-button-gradient">
           <a href="suivi.jsp">Formulaire de Suivi </a>
             </div>
+            
             <%} %>
           </div>
         </div>

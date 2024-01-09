@@ -1,7 +1,9 @@
 package Blog;
 
 import java.sql.Date;
+import java.util.List;
 
+import Comment.Comment;
 import User.User;
 
 public class Blog {
@@ -11,9 +13,18 @@ public class Blog {
 	private String description;
 	private String image;
 	private Date date;
-	
-	private User user;
+	private List<Comment> comments;
+	// getters et setters
 
+	private User user;
+	 public List<Comment> getComments() {
+	        return comments;
+	    }
+
+	    // Setter pour comments
+	    public void setComments(List<Comment> comments) {
+	        this.comments = comments;
+	    }
     public User getUser() {
         return user;
     }

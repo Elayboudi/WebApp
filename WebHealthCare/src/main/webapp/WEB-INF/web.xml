@@ -179,4 +179,24 @@
     <servlet-name>GetAllCommentsByBlogServlet</servlet-name>
     <url-pattern>/GetAllCommentsByBlogServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateProfileServlet</display-name>
+    <servlet-name>UpdateProfileServlet</servlet-name>
+    <servlet-class>User.UpdateProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateProfileServlet</servlet-name>
+    <url-pattern>/UpdateProfileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModifyUserServlet</display-name>
+    <servlet-name>ModifyUserServlet</servlet-name>
+    <servlet-class>User.ModifyUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyUserServlet</servlet-name>
+    <url-pattern>/ModifyUserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

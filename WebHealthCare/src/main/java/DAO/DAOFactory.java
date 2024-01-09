@@ -17,6 +17,8 @@ import Form.ResponseChoicesDAO;
 import Form.ResponseChoicesDAOImpl;
 import Blog.BlogDAO;
 import Blog.BlogDaoImpl;
+import Comment.CommentDAO;
+import Comment.CommentDaoImpl;
 public class DAOFactory {
 
     private static final String FICHIER_PROPERTIES       = "/DAO/DAO.properties";
@@ -102,6 +104,8 @@ public class DAOFactory {
     	}
      public BlogDAO getBlogDAO() {
  	    return new BlogDaoImpl(this);
+ 	    
  	}
-
+     public CommentDAO getCommentDAO() {
+  	    return new CommentDaoImpl(this);}
 }
