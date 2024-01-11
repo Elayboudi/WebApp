@@ -35,7 +35,7 @@ public class CommentDaoImpl implements CommentDAO {
 	                }
 	            }
 	        } catch (SQLException e) {
-	            e.printStackTrace(); // Handle the exception appropriately
+	            e.printStackTrace(); 
 	        }
 	        return comments;
 	    }
@@ -55,7 +55,7 @@ public class CommentDaoImpl implements CommentDAO {
 	                }
 	            }
 	        } catch (SQLException e) {
-	            e.printStackTrace(); // Handle the exception appropriately
+	            e.printStackTrace(); 
 	        }
 	        return comment;
 	    }
@@ -65,16 +65,13 @@ public class CommentDaoImpl implements CommentDAO {
 	    	 Connection connection = null;
 	         PreparedStatement preparedStatement = null;
 	         try {
-	             // Récupération de la connexion depuis la fabrique DAO
+	            
 	             connection = daoFactory.getConnection();
 
-	             // Requête SQL pour insérer un blog dans la base de données
 	             String query = "INSERT INTO comment (comment,  id_user, id_blog) VALUES (?, ?, ?)";
 
-	             // Préparation de la requête avec la gestion des clés générées
 	             preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-	             // Définition des valeurs des paramètres de la requête
 	             preparedStatement.setString(1, comment.getComment());
 	             preparedStatement.setInt(2, comment.getIdUser());
 	             preparedStatement.setInt(3, comment.getIdBlog());
@@ -83,7 +80,7 @@ public class CommentDaoImpl implements CommentDAO {
 	        
 	             preparedStatement.executeUpdate();
 	        } catch (SQLException e) {
-	            e.printStackTrace(); // Handle the exception appropriately
+	            e.printStackTrace(); 
 	        }
 	    }
 
@@ -101,7 +98,7 @@ public class CommentDaoImpl implements CommentDAO {
 
 	            statement.executeUpdate();
 	        } catch (SQLException e) {
-	            e.printStackTrace(); // Handle the exception appropriately
+	            e.printStackTrace();
 	        }
 	    }
 
@@ -114,7 +111,7 @@ public class CommentDaoImpl implements CommentDAO {
 	            statement.setLong(1, commentId);
 	            statement.executeUpdate();
 	        } catch (SQLException e) {
-	            e.printStackTrace(); // Handle the exception appropriately
+	            e.printStackTrace(); 
 	        }
 	    }
 
@@ -123,15 +120,13 @@ public class CommentDaoImpl implements CommentDAO {
 	        comment.setId(resultSet.getInt("id"));
 	        comment.setComment(resultSet.getString("comment"));
 	        comment.setDate(resultSet.getDate("date"));
-	        // Assume you have appropriate methods in the User and Blog classes to set their properties
 	       
 	        comment.setIdUser(resultSet.getInt("id_user"));
 	        comment.setIdBlog(resultSet.getInt("id_blog"));
 	        return comment;
 	    }
 
-	    // Implement methods like getUserById and getBlogById to retrieve User and Blog entities
-	    // based on their respective IDs.
+	 
 
 public List<Comment> getAllCommentsWithUsersByBlogId(int blogId) {
     List<Comment> commentsWithUsers = new ArrayList<>();
@@ -152,7 +147,7 @@ public List<Comment> getAllCommentsWithUsersByBlogId(int blogId) {
             }
         }
     } catch (SQLException e) {
-        e.printStackTrace(); // Handle the exception appropriately
+        e.printStackTrace(); 
     }
 
     return commentsWithUsers;
@@ -161,13 +156,11 @@ public List<Comment> getAllCommentsWithUsersByBlogId(int blogId) {
 private Comment mapResultSetToCommentWithUser(ResultSet resultSet) throws SQLException {
     Comment comment = mapResultSetToComment(resultSet);
 
-    // Create a User object and set its properties
+    
     User user = new User();
     user.setid(resultSet.getInt("id_user"));
     user.setusername(resultSet.getString("username"));
     user.setemail(resultSet.getString("email"));
-
-    // Set the User object in the Comment
     comment.setUser(user);
 
     return comment;

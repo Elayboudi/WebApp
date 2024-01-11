@@ -8,20 +8,20 @@
 <%@ page import="java.util.stream.Collectors" %>
 <%@ page import="User.User" %>
 <%
-// Récupérer l'objet user depuis la session
+
 User user = (User) session.getAttribute("user");
 %>
 <%
 DAOFactory daoFactory = DAOFactory.getInstance();
 QuestionsDAO questionsDAO = new QuestionsDaoImpl(daoFactory);
 
-// Récupérer les questions avec les choix depuis la base de données
+
 List<Questions> questionsList = questionsDAO.getQuestionsWithChoices();
 
-// Récupérer les modes de réponse depuis la base de donnéese
+
 List<ResponseMode> responseModes = questionsDAO.getResponseModes();
 
-// Stocker les id_mode dans une Map pour un accès facile
+
 Map<Integer, Integer> responseModesMap = responseModes.stream()
         .collect(Collectors.toMap(ResponseMode::getIdMode, ResponseMode::getIdMode));
 %>
@@ -37,7 +37,7 @@ Map<Integer, Integer> responseModesMap = responseModes.stream()
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #D9EAFE; /* Arrière-plan rose clair */
+            background-color: #D9EAFE; 
         }
 
         html {
@@ -66,10 +66,10 @@ Map<Integer, Integer> responseModesMap = responseModes.stream()
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            width: 80%; /* Ajustez la largeur selon vos besoins */
-            max-width: 800px; /* Définir une largeur maximale pour une meilleure lisibilité */
-            overflow-y: auto; /* Ajouter le défilement si nécessaire */
-            max-height: 70vh; /* Définir une hauteur maximale pour le défilement */
+            width: 80%; 
+            max-width: 800px; 
+            overflow-y: auto; 
+            max-height: 70vh; 
         }
 
         .question-container {
@@ -77,36 +77,36 @@ Map<Integer, Integer> responseModesMap = responseModes.stream()
         }
 
         .choices-container {
-            display: block; /* Choisir block pour placer chaque choix sur une nouvelle ligne */
+            display: block; 
             margin-top: 10px;
         }
 
         .choice {
-            margin-bottom: 5px; /* Ajouter un espacement entre chaque choix */
+            margin-bottom: 5px; 
             display: flex;
-            align-items: center; /* Aligner les éléments verticalement */
+            align-items: center; 
         }
 
         input[type="text"],
         input[type="checkbox"],
         input[type="radio"] {
-            width: auto; /* Ajustez la largeur selon vos besoins */
-            margin-right: 5px; /* Ajouter un espacement entre le bouton et le texte */
+            width: auto; 
+            margin-right: 5px; 
         }
 
         input[type="submit"] {
-            background: #FE96A0; /* Couleur rose vive */
+            background: #FE96A0; 
             color: white;
             padding: 10px;
             border: none;
             border-radius: 5px;
             font-size: 18px;
             cursor: pointer;
-            margin-top: 15px; /* Ajouter un espace au-dessus du bouton */
+            margin-top: 15px; 
         }
 
         input[type="submit"]:hover {
-            background: #FE96A0; /* Couleur rose foncé au survol */
+            background: #FE96A0; 
         }
 
         label {

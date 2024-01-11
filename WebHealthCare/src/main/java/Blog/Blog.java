@@ -14,14 +14,13 @@ public class Blog {
 	private String image;
 	private Date date;
 	private List<Comment> comments;
-	// getters et setters
-
+	
 	private User user;
 	 public List<Comment> getComments() {
 	        return comments;
 	    }
 
-	    // Setter pour comments
+	    
 	    public void setComments(List<Comment> comments) {
 	        this.comments = comments;
 	    }

@@ -46,17 +46,13 @@ public class AddCommentServlet extends HttpServlet {
 	    System.out.println("Comment Text: " + commentText);
 	    System.out.println("Blog ID: " + blogId);
 	    System.out.println("User ID: " + user.getid());
-	    // Créer un objet Comment
+	   
 	    Comment comment = new Comment();
 	    comment.setComment(commentText);
 	    comment.setIdUser(user.getid());
 	    comment.setIdBlog(blogId);
-
-	    // Ajouter le commentaire à la base de données
 	    CommentDAO commentDAO = new CommentDaoImpl(DAOFactory.getInstance());
 	    commentDAO.addComment(comment);
-
-	    // Rediriger vers la page des commentaires
 	    response.sendRedirect("ViewBlogsServlet");
 	}
 

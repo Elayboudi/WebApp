@@ -3,7 +3,7 @@
 <%@ page import="jakarta.servlet.http.HttpSession" %>
 
 <%
-    // Récupérer l'objet user depuis la session
+    
     User user = (User) session.getAttribute("user");
 %>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #D9EAFE; /* Arrière-plan rose clair */
+            background-color: #D9EAFE; 
         }
 
         html {
@@ -38,9 +38,9 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            width: 80%; /* Ajustez la largeur selon vos besoins */
-            max-width: 800px; /* Définir une largeur maximale pour une meilleure lisibilité */
-            margin: auto; /* Centrer le formulaire */
+            width: 80%; 
+            max-width: 800px; 
+            margin: auto; 
         }
 
         label {
@@ -50,29 +50,29 @@
 
         input[type="text"],
         textarea {
-            width: 100%; /* Prendre toute la largeur disponible */
+            width: 100%; 
             padding: 10px;
             margin-bottom: 10px;
             box-sizing: border-box;
         }
 
         input[type="file"] {
-            margin-top: 10px; /* Ajouter un espace au-dessus du champ de fichier */
+            margin-top: 10px; 
         }
 
         button {
-            background: #FE96A0; /* Couleur rose vive */
+            background: #FE96A0; 
             color: white;
             padding: 10px;
             border: none;
             border-radius: 5px;
             font-size: 18px;
             cursor: pointer;
-            margin-top: 15px; /* Ajouter un espace au-dessus du bouton */
+            margin-top: 15px; 
         }
 
         button:hover {
-            background: #FE96A0; /* Couleur rose foncé au survol */
+            background: #FE96A0; 
         }
     </style>
 </head>

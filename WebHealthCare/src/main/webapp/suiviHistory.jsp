@@ -14,13 +14,13 @@
         <tr>
             <th>ID</th>
             <th>Degré de Douleur</th>
-            <!-- Ajoutez d'autres colonnes en fonction de votre modèle de données -->
+            
         </tr>
         <c:forEach var="suivi" items="${suivis}">
             <tr>
                 <td>${suivi.id}</td>
                 <td>${suivi.degreDouleur}</td>
-                <!-- Ajoutez d'autres colonnes en fonction de votre modèle de données -->
+               
             </tr>
         </c:forEach>
     </table>

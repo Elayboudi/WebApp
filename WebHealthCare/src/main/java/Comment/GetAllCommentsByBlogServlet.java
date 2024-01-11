@@ -35,32 +35,26 @@ public class GetAllCommentsByBlogServlet extends HttpServlet {
 
         if (blogIdParam != null && !blogIdParam.isEmpty()) {
             try {
-                // Convertir l'ID du blog en entier
+                
                 int blogId = Integer.parseInt(blogIdParam);
                UserDAO userDAO=new UserDAO(DAOFactory.getInstance());
-                // Récupérer les commentaires du blog depuis la base de données
+                
                 CommentDAO commentDAO = new CommentDaoImpl(DAOFactory.getInstance());
                 List<Comment> comments = commentDAO.getAllCommentsByBlogId(blogId);
-                
-                
-                // Retrieve comments with users for the specified blog
+              
                 List<Comment> commentsWithUsers = commentDAO.getAllCommentsWithUsersByBlogId(blogId);
 
-                // Ajouter les commentaires à la requête pour les afficher dans comments.jsp
                 request.setAttribute("commentsWithUsers", commentsWithUsers);
 
-                // Ajouter les commentaires à la requête pour les afficher dans comments.jsp
                 request.setAttribute("comments", comments);
 
-                // Rediriger vers comments.jsp
                 RequestDispatcher dispatcher = request.getRequestDispatcher("comments.jsp");
                 dispatcher.forward(request, response);
             } catch (NumberFormatException e) {
-                e.printStackTrace(); // Gérer l'exception si l'ID du blog n'est pas un entier valide
-                response.sendRedirect("error.jsp"); // Rediriger vers une page d'erreur si nécessaire
+                e.printStackTrace(); 
+                response.sendRedirect("error.jsp"); 
             }
         } else {
-            response.sendRedirect("error.jsp"); // Rediriger vers une page d'erreur si l'ID du blog est manquant
         }
     }
 	

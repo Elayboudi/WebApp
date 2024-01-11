@@ -4,7 +4,7 @@
 
 <%@ page import="User.User" %>
 <%
-// Récupérer l'objet user depuis la session
+
 User user = (User) session.getAttribute("user");
 %>
 
@@ -23,11 +23,11 @@ function toggleText(targetId, buttonToShow) {
         shortText.style.display = 'none';
         fullText.style.display = 'block';
         readMoreButton.style.display = 'none';
-        showLessButton.style.display = 'inline'; // Afficher le bouton "Show Less"
+        showLessButton.style.display = 'inline'; 
     } else {
         shortText.style.display = 'block';
         fullText.style.display = 'none';
-        readMoreButton.style.display = 'inline'; // Afficher le bouton "Read More"
+        readMoreButton.style.display = 'inline'; 
         showLessButton.style.display = 'none';
     }
 }

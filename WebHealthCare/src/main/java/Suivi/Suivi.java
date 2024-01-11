@@ -14,18 +14,16 @@ public class Suivi {
     private int degreDouleur;
     private LocalDate date;
 
-    // Ajoutez d'autres champs ou méthodes nécessaires
-
-    // Constructeur
+   
     public Suivi() {
-        // Initialisation des tableaux pour éviter les nullPointerException
+       
         this.localisations = new String[0];
         this.symptomes = new String[0];
         this.aggravations = new String[0];
         this.sentiments = new String[0];
     }
 
-    // Getters et setters
+    
 
     public User getUser() {
         return user;

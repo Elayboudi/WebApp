@@ -14,7 +14,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: #D9EAFE; /* Arrière-plan rose clair */
+            background: #D9EAFE; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -62,8 +62,8 @@
 
         .icon-input input {
             width: 90%;
-            padding-left: 30px; /* Ajustez la marge gauche pour laisser de l'espace à l'icône */
-            border: 2px solid #FE96A0; /* Couleur de bordure de l'icône */
+            padding-left: 30px; 
+            border: 2px solid #FE96A0; 
             border-radius: 4px;
         }
 
@@ -75,7 +75,7 @@
 
         .btn {
             flex: 1;
-            background: #FE96A0; /* Couleur rose vive */
+            background: #FE96A0; 
             color: white;
             padding: 10px;
             border: none;
@@ -85,12 +85,12 @@
         }
 
         .btn:hover {
-            background: #FE96A0; /* Couleur rose foncé au survol */
+            background: #FE96A0;
         }
 
         .link {
             text-decoration: none;
-            color: #FE96A0; /* Couleur rose vive pour les liens */
+            color: #FE96A0; 
             font-size: 16px;
         }
         .error-message {
@@ -102,7 +102,7 @@
 <body>
     <div class="login-container">
         <div class="logo">
-            <!-- Mettez ici votre code pour le logo -->
+          
             <img src="logo.png" alt="Logo PainCare">
         </div>
 

@@ -23,28 +23,26 @@ public class BlogDaoImpl implements BlogDAO {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
-            // Récupération de la connexion depuis la fabrique DAO
+           
             connection = daoFactory.getConnection();
 
-            // Requête SQL pour insérer un blog dans la base de données
+           
             String query = "INSERT INTO blog (id_user, title, description, image) VALUES (?, ?, ?, ?)";
 
-            // Préparation de la requête avec la gestion des clés générées
             preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            // Définition des valeurs des paramètres de la requête
-            preparedStatement.setInt(1, blog.getUserID());
+                       preparedStatement.setInt(1, blog.getUserID());
             preparedStatement.setString(2, blog.getTitle());
             preparedStatement.setString(3, blog.getDescription());
             preparedStatement.setString(4, blog.getImage());
          
-            // Exécution de la requête
+           
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows == 0) {
                 throw new SQLException("Creating blog failed, no rows affected.");
             }
 
-            // Récupération de l'ID généré automatiquement
+           
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     blog.setID(generatedKeys.getInt(1));
@@ -53,9 +51,8 @@ public class BlogDaoImpl implements BlogDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérer l'exception de manière appropriée (journalisation, remontée, etc.)
+            e.printStackTrace(); 
         } finally {
-            // Fermeture des ressources (connexion et déclaration préparée)
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -64,7 +61,7 @@ public class BlogDaoImpl implements BlogDAO {
                     connection.close();
                 }
             } catch (SQLException e) {
-                e.printStackTrace(); // Gérer l'exception de fermeture de la connexion
+                e.printStackTrace();
             }
         }
     }
@@ -84,7 +81,7 @@ public class BlogDaoImpl implements BlogDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         }
         return blog;
     }
@@ -102,7 +99,7 @@ public class BlogDaoImpl implements BlogDAO {
             while (resultSet.next()) {
                 Blog blog = mapResultSetToBlog(resultSet);
                 
-                // Ajouter également les informations de l'utilisateur
+                
                 User user = new User();
                 user.setid(resultSet.getInt("id_user"));
                 user.setusername(resultSet.getString("username"));
@@ -111,7 +108,7 @@ public class BlogDaoImpl implements BlogDAO {
                 blogs.add(blog);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         }
         return blogs;
     }
@@ -132,7 +129,7 @@ public class BlogDaoImpl implements BlogDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         }
         return blogs;
     }
@@ -151,7 +148,7 @@ public class BlogDaoImpl implements BlogDAO {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         }
     }
 
@@ -165,7 +162,7 @@ public class BlogDaoImpl implements BlogDAO {
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         }
     }
 

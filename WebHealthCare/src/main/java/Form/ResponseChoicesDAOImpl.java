@@ -32,7 +32,7 @@ public class ResponseChoicesDAOImpl implements ResponseChoicesDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Gérer les exceptions selon votre application
+            
         }
 
         return choices;

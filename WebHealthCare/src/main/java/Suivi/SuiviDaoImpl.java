@@ -34,13 +34,13 @@ public class SuiviDaoImpl implements SuiviDAO {
         try {
             connection = daoFactory.getConnection();
             
-            // Créez votre requête SQL pour insérer les données du suivi dans la base de données
+            
             String query = "INSERT INTO suivi (id_user, localisations, symptomes, aggravations, sentiments, degre_douleur) " +
                            "VALUES (?, ?, ?, ?, ?, ?)";
 
             preparedStatement = connection.prepareStatement(query);
 
-            // Remplacez les placeholders par les valeurs réelles du suivi
+           
             preparedStatement.setInt(1, suivi.getUser().getid());
             preparedStatement.setString(2, String.join(",", defaultIfNull(suivi.getLocalisations(), new String[0])));
             preparedStatement.setString(3, String.join(",", defaultIfNull(suivi.getSymptomes(), new String[0])));
@@ -50,12 +50,12 @@ public class SuiviDaoImpl implements SuiviDAO {
 
 
 
-            // Exécutez la requête
+           
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérez les exceptions correctement dans votre application
+            e.printStackTrace(); 
         } finally {
-            // Fermez les ressources (Connection, PreparedStatement) ici dans le bloc finally
+          
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
@@ -64,7 +64,7 @@ public class SuiviDaoImpl implements SuiviDAO {
                     connection.close();
                 }
             } catch (SQLException e) {
-                e.printStackTrace(); // Gérez les exceptions correctement dans votre application
+                e.printStackTrace(); 
             }
         }
     }
@@ -87,10 +87,7 @@ public class SuiviDaoImpl implements SuiviDAO {
                 degresDouleur.add(resultSet.getInt("degre_douleur"));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérez les exceptions correctement dans votre application
-        } finally {
-            // Fermez les ressources (Connection, PreparedStatement, ResultSet) ici dans le bloc finally
-            // ...
+            e.printStackTrace(); 
         }
 
         return degresDouleur;
@@ -114,10 +111,9 @@ public class SuiviDaoImpl implements SuiviDAO {
                 dates.add(date);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérer l'exception selon vos besoins
+            e.printStackTrace(); 
         } finally {
-            // Fermez les ressources (ResultSet, PreparedStatement, Connection)
-            // ...
+            
         }
 
         return dates;
@@ -146,7 +142,7 @@ public class SuiviDaoImpl implements SuiviDAO {
                 sentiments.addAll(Arrays.asList(sentimentsArray));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace();
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -168,14 +164,14 @@ public class SuiviDaoImpl implements SuiviDAO {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                // Diviser la chaîne en utilisant la virgule comme séparateur
+                
                 String[] localisationsArray = resultSet.getString("localisations").split(",");
                 
-                // Ajouter chaque localisation à la liste
+               
                 localisations.addAll(Arrays.asList(localisationsArray));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérer l'exception de manière appropriée
+            e.printStackTrace(); 
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -197,14 +193,13 @@ public class SuiviDaoImpl implements SuiviDAO {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                // Diviser la chaîne en utilisant la virgule comme séparateur
-                String[] aggravationsArray = resultSet.getString("aggravations").split(",");
                 
-                // Ajouter chaque aggravation à la liste
+                String[] aggravationsArray = resultSet.getString("aggravations").split(",");
+              
                 aggravations.addAll(Arrays.asList(aggravationsArray));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérer l'exception de manière appropriée
+            e.printStackTrace(); 
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -226,14 +221,13 @@ public class SuiviDaoImpl implements SuiviDAO {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                // Diviser la chaîne en utilisant la virgule comme séparateur
-                String[] symptomesArray = resultSet.getString("symptomes").split(",");
                 
-                // Ajouter chaque symptôme à la liste
+                String[] symptomesArray = resultSet.getString("symptomes").split(",");
+              
                 symptomes.addAll(Arrays.asList(symptomesArray));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Gérer l'exception de manière appropriée
+            e.printStackTrace(); 
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -253,7 +247,7 @@ public class SuiviDaoImpl implements SuiviDAO {
                 connection.close();
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         }
     }
     
@@ -277,7 +271,7 @@ public class SuiviDaoImpl implements SuiviDAO {
                 symptomes.addAll(Arrays.asList(symptomesArray));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace();
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -302,7 +296,7 @@ public class SuiviDaoImpl implements SuiviDAO {
                 sentiments.addAll(Arrays.asList(sentimentsArray));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -327,7 +321,7 @@ public class SuiviDaoImpl implements SuiviDAO {
                 aggravations.addAll(Arrays.asList(aggravationsArray));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -352,7 +346,7 @@ public class SuiviDaoImpl implements SuiviDAO {
                 localisations.addAll(Arrays.asList(localisationsArray));
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+            e.printStackTrace(); 
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -362,12 +356,12 @@ public class SuiviDaoImpl implements SuiviDAO {
     public Map<String, Double> calculatePercentage(List<String> elements) {
         Map<String, Integer> countMap = new HashMap<>();
 
-        // Compter le nombre d'occurrences de chaque élément
+       
         for (String element : elements) {
             countMap.put(element, countMap.getOrDefault(element, 0) + 1);
         }
 
-        // Calculer le pourcentage pour chaque élément
+        
         Map<String, Double> percentageMap = new HashMap<>();
         int totalElements = elements.size();
         DecimalFormat df = new DecimalFormat("#,##");
@@ -404,6 +398,5 @@ public class SuiviDaoImpl implements SuiviDAO {
         return calculatePercentage(localisations);
     }
 
-    // Ajoutez des fonctions similaires pour les autres éléments (aggravations, symptômes, localisations)
-
+   
 }

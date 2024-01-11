@@ -41,8 +41,7 @@ public class SignUpServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // Effectuez une validation appropriée des données du formulaire ici
-
+       
         User newUser = new User();
         newUser.setusername(username);
         newUser.setemail(email);
@@ -52,10 +51,9 @@ public class SignUpServlet extends HttpServlet {
         boolean userCreated = userDAO.createUser(newUser);
 
         if (userCreated) {
-            // L'inscription a réussi, vous pouvez rediriger l'utilisateur vers la page de connexion, par exemple.
+        
             response.sendRedirect("Login.jsp");
         } else {
-            // L'inscription a échoué, vous pouvez rediriger l'utilisateur vers une page d'erreur d'inscription, par exemple.
             response.sendRedirect("signup.jsp?error=true");
         }
     }

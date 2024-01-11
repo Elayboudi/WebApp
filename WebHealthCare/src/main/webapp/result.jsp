@@ -8,7 +8,7 @@
 <%@ page import="DAO.DAOFactory" %>
 
 <%
-    // Récupération des données depuis la session
+    
     double moyenneDouleur = (Double) session.getAttribute("moyenneDouleur");
     Set<String> symptomes = (Set<String>) session.getAttribute("symptomes");
     Set<String> aggravations = (Set<String>) session.getAttribute("aggravations");
@@ -20,19 +20,18 @@
     Map<String, Double> aggravationPercentages = (Map<String, Double>) session.getAttribute("aggravationPercentages");
     Map<String, Double> localisationPercentages = (Map<String, Double>) session.getAttribute("localisationPercentages");
 
-    // Récupération des données pour le graphique d'évolution
     List<String> dates = (List<String>) session.getAttribute("dates");
     List<Integer> degrees = (List<Integer>) session.getAttribute("degrees");
 %>
 
 <html>
 <head>
-    <!-- Titre de la page -->
+  
     <title>Résultat du Suivi</title>
     <!-- Bibliothèque Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <!-- Styles -->
+   
     <style>
         #container {
             display: flex;

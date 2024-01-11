@@ -12,15 +12,13 @@ public class Comment {
     private Blog blog;
     private int id_user;
     private int id_blog;
-    // Constructors, getters, and setters
-
-    // Constructors
+   
     public Comment() {
-        // Default constructore
+        
     }
 
  
-    // Getters and setters
+  
     public int getId() {
         return id;
     }

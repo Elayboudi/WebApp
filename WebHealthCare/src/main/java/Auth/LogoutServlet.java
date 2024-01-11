@@ -30,11 +30,11 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 
         if (session != null) {
-            // Invalidez la session (déconnexion de l'utilisateur)
+           
             session.invalidate();
         }
 
-        // Redirigez l'utilisateur vers la page de connexion ou une autre page appropriée
+     
         response.sendRedirect("home.jsp");
 	}
 	/**

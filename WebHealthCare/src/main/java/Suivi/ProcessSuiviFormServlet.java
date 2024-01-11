@@ -49,7 +49,7 @@ public class ProcessSuiviFormServlet extends HttpServlet {
         Set<String> symptomes = suiviDAO.getDistinctSymptomesByUserId(user.getid());
         Set<String> localisations = suiviDAO.getDistinctLocalisationByUserId(user.getid());
 
-        // Mettre à jour la session avec les nouvelles données
+        
         request.getSession().setAttribute("sentiments", sentiments);
         request.getSession().setAttribute("aggravations", aggravations);
         request.getSession().setAttribute("symptomes", symptomes);
@@ -88,7 +88,7 @@ public class ProcessSuiviFormServlet extends HttpServlet {
 
 	    DAOFactory daoFactory = DAOFactory.getInstance();
 	    SuiviDAO suiviDAO = daoFactory.getSuiviDAO();
-	    // Récupérer les données du formulaire
+	    
 	    Suivi suivi = new Suivi();
 	    suivi.setUser(user);
 	    suivi.setLocalisations(request.getParameterValues("localisation_douleurs"));
@@ -97,7 +97,7 @@ public class ProcessSuiviFormServlet extends HttpServlet {
 	    suivi.setSentiments(request.getParameterValues("sentiments"));
 	    suivi.setDegreDouleur(Integer.parseInt(request.getParameter("degre_douleur")));
 
-	    // Utiliser le DAO pour enregistrer les données
+	   
 	    
 	    suiviDAO.createSuivi(suivi);
 	    Set<String> sentiments = suiviDAO.getDistinctSentimentsByUserId(user.getid());
@@ -106,16 +106,16 @@ public class ProcessSuiviFormServlet extends HttpServlet {
 	    Set<String> localisations = suiviDAO.getDistinctLocalisationByUserId(user.getid());
 	    
 	   
-	    // Mettre à jour la session avec les nouvelles données
+	   
 	    request.getSession().setAttribute("sentiments", sentiments);
 	    request.getSession().setAttribute("aggravations", aggravations);
 	    request.getSession().setAttribute("symptomes", symptomes);
 	    request.getSession().setAttribute("localisations", localisations);
-	    // Calculer la nouvelle moyenne avec les nouvelles données
+	   
 	    
 	    Double MoyenneDouleur = calculateMoyenne(suiviDAO, user.getid());
 	    
-	    // Mettre à jour la session avec la nouvelle moyenne
+	   
 	    request.getSession().setAttribute("moyenneDouleur",MoyenneDouleur);
 	    
 	    Map<String, Double> aggravationPercentages = suiviDAO.getPercentageOfAggravations(user.getid());
@@ -146,7 +146,7 @@ public class ProcessSuiviFormServlet extends HttpServlet {
 	    List<Integer> degresDouleur = suiviDAO.getDegresDouleurByUserId(userId);
 	   
 	    if (degresDouleur.isEmpty()) {
-	        return 0.0; // Ou une valeur par défaut appropriée
+	        return 0.0; 
 	    }
 
 	    int somme = 0;
@@ -156,11 +156,11 @@ public class ProcessSuiviFormServlet extends HttpServlet {
 	    
 	    double moyenne = (double) somme / degresDouleur.size();
 
-	    // Utilisation de DecimalFormat pour formater la moyenne
+	    
 	    DecimalFormat df = new DecimalFormat("#,##");
 	    String formattedMoyenne = df.format(moyenne);
 
-	    // Conversion de la moyenne formatée en double
+	   
 	    return Double.parseDouble(formattedMoyenne);}
 
 

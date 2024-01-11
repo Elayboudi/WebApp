@@ -49,47 +49,33 @@ public class PublishBlogServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 DAOFactory daoFactory = DAOFactory.getInstance();
         
-        // Récupération de l'utilisateur depuis la session
+       
         User user = (User) request.getSession().getAttribute("user");
-        
-        // Récupération des paramètres du formulaire
-        int userId = user.getid(); // Vous pouvez utiliser directement user.getId() au lieu de demander "userId" depuis le formulaire
+       
+        int userId = user.getid(); 
         String title = request.getParameter("title");
         String description = request.getParameter("description");
-
-        // Récupération du fichier image
         Part filePart = request.getPart("image");
-
-        // Extraire le nom du fichier
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-
-        // Enregistrer le fichier dans un emplacement sur le serveur
         try (InputStream fileContent = filePart.getInputStream()) {
-            // Chemin où vous souhaitez enregistrer l'image (ajustez selon votre structure de projet)
+           
             Path imagePath = Paths.get("C:\\Users\\pc\\git\\repository9\\WebHealthCare\\src\\main\\webapp\\pics", fileName);
+Files.copy(fileContent, imagePath, StandardCopyOption.REPLACE_EXISTING);
 
-            // Copier le flux d'entrée vers le fichier de destination
-            Files.copy(fileContent, imagePath, StandardCopyOption.REPLACE_EXISTING);
-
-            // Enregistrez le chemin de l'image dans votre base de données ou où vous stockez les informations du blog
+          
             String imagePathInDatabase = "pics/" + fileName;
 
-
-            // Créer un objet Blog
             Blog blog = new Blog();
             blog.setUserID(userId);
             blog.setTitle(title);
             blog.setDescription(description);
             blog.setImage(imagePathInDatabase);
 
-            // Récupération du DAO pour les blogs
             BlogDAO blogdao = daoFactory.getBlogDAO();
 
-            // Ajouter le blog à la base de données
             blogdao.createBlog(blog);
         }
 
-        // Rediriger vers la page d'affichage des blogs
         response.sendRedirect( "UserBlogsServlet");
     }
 	}

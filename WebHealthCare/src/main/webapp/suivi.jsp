@@ -3,7 +3,7 @@
 <%@ page import="jakarta.servlet.http.HttpSession" %>
 
 <%
-    // Récupérer l'objet user depuis la session
+    
     User user = (User) session.getAttribute("user");
 %>
 
@@ -18,7 +18,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #D9EAFE; /* Arrière-plan rose clair */
+            background-color: #D9EAFE; 
         }
 
         html {
@@ -39,9 +39,9 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            width: 80%; /* Ajustez la largeur selon vos besoins */
-            max-width: 800px; /* Définir une largeur maximale pour une meilleure lisibilité */
-            margin: auto; /* Centrer le formulaire */
+            width: 80%; 
+            max-width: 800px; 
+            margin: auto; 
         }
 
         label {
@@ -55,18 +55,18 @@
         }
 
         input[type="submit"] {
-            background: #FE96A0; /* Couleur rose vive */
+            background: #FE96A0;
             color: white;
             padding: 10px;
             border: none;
             border-radius: 5px;
             font-size: 18px;
             cursor: pointer;
-            margin-top: 15px; /* Ajouter un espace au-dessus du bouton */
+            margin-top: 15px; 
         }
 
         input[type="submit"]:hover {
-            background: #FE96A0; /* Couleur rose foncé au survol */
+            background: #FE96A0; 
         }
          .center {
             text-align: center;
@@ -81,7 +81,7 @@
     
     <form action="ProcessSuiviFormServlet" method="post">
 
-        <!-- Question Localisation des douleurs -->
+        
         <label for="localisation_douleurs">Localisation des douleurs :</label>
         <input type="checkbox" name="localisation_douleurs" value="Abdomen">Abdomen
         <input type="checkbox" name="localisation_douleurs" value="Dos">Dos
@@ -91,7 +91,6 @@
         <input type="checkbox" name="localisation_douleurs" value="Hanches">Hanches
         <br>
 
-        <!-- Question Symptômes -->
         <label for="symptomes">Symptômes :</label>
         <input type="checkbox" name="symptomes" value="Crampes">Crampes
         <input type="checkbox" name="symptomes" value="Seins sensibles">Seins sensibles
@@ -102,7 +101,7 @@
         <input type="checkbox" name="symptomes" value="Envie de manger">Envie de manger
         <br>
 
-        <!-- Question Ce qui aggrave la douleur -->
+       
         <label for="ce_qui_aggrave_douleur">Ce qui aggrave la douleur :</label>
         <input type="checkbox" name="ce_qui_aggrave_douleur" value="Manque de sommeil">Manque de sommeil
         <input type="checkbox" name="ce_qui_aggrave_douleur" value="Assis">Assis
@@ -113,25 +112,23 @@
         <input type="checkbox" name="ce_qui_aggrave_douleur" value="Miction">Miction
         <br>
 
-        <!-- Question Sentiments -->
+       
         <label for="sentiments">Sentiments :</label>
         <input type="checkbox" name="sentiments" value="Anxieux">Anxieux
         <input type="checkbox" name="sentiments" value="Déprimé">Déprimé
         <input type="checkbox" name="sentiments" value="Etourdi">Etourdi
         <input type="checkbox" name="sentiments" value="Vomissements">Vomissements
         <input type="checkbox" name="sentiments" value="Diarhée">Diarhée
-        <!-- ... Ajoutez d'autres options ... -->
-
-        <!-- Question Degré de douleur -->
+      
         <label for="degre_douleur">Degré de douleur :</label>
         <input type="range" name="degre_douleur" min="0" max="10">
         <br>
 
-        <!-- Ajoutez d'autres questions selon vos besoins -->
+       
 
         <input type="submit" value="Soumettre">
     </form>
 
-    <!-- ... Reste du contenu de la page ... -->
+   
 </body>
 </html>

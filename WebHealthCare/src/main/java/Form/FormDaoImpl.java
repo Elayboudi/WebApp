@@ -14,8 +14,6 @@ import java.util.Map;
 public class FormDaoImpl implements FormDAO {
 	private DAOFactory daoFactory;
 
-    // Déplacez la déclaration de la requête SQL à l'extérieur de la méthode
-  
 
     public FormDaoImpl(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
@@ -23,9 +21,7 @@ public class FormDaoImpl implements FormDAO {
 
     @Override
     public List<Questions> getAllQuestions() {
-        // Mettez en œuvre la logique pour récupérer toutes les questions depuis la base de données
-        // Vous devrez probablement effectuer une jointure avec la table reponse_mode pour obtenir le mode de réponse
-        List<Questions> questions = new ArrayList<>();
+       List<Questions> questions = new ArrayList<>();
         try (Connection connection = daoFactory.getConnection()) {
             String sql = "SELECT q.id_question, q.question, q.has_choices, r.id_mode FROM questions q " +
                          "JOIN reponse_mode r ON q.id_mode= r.id_mode";
@@ -43,7 +39,6 @@ public class FormDaoImpl implements FormDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Gérer les exceptions appropriées selon votre application.
         }
         return questions;
     }
@@ -63,7 +58,7 @@ public class FormDaoImpl implements FormDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Gérer les exceptions appropriées selon votre application.
+            
         }
         return choices;
     }
@@ -83,7 +78,7 @@ public class FormDaoImpl implements FormDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Gérer les exceptions selon votre application.
+            
         }
     }
     public void addResponse(List<formulaire> responses) throws DAOException {
@@ -95,7 +90,7 @@ public class FormDaoImpl implements FormDAO {
             connection = daoFactory.getConnection();
             preparedStatement = connection.prepareStatement(SQL_INSERT);
 
-            // Utiliser un lot pour améliorer les performances d'insertion
+           
             for (formulaire response : responses) {
                 preparedStatement.setInt(1, response.getid_user());
                 preparedStatement.setInt(2, response.getid_question());
@@ -113,7 +108,7 @@ public class FormDaoImpl implements FormDAO {
             throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-        // Set parameters based on their types
+       
         for (int i = 0; i < parameters.length; i++) {
             Object parameter = parameters[i];
             int parameterIndex = i + 1;
@@ -123,8 +118,7 @@ public class FormDaoImpl implements FormDAO {
             } else if (parameter instanceof String) {
                 preparedStatement.setString(parameterIndex, (String) parameter);
             } else {
-                // Handle other types as needed
-                // You might need to add more cases based on your specific requirements
+               
             }
         }
 

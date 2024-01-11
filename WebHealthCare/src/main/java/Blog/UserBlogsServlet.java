@@ -33,11 +33,11 @@ public class UserBlogsServlet extends HttpServlet {
 		DAOFactory daoFactory = DAOFactory.getInstance();
 		User user = (User) request.getSession().getAttribute("user");
 
-        // Récupérer les blogs de l'utilisateur
+       
         BlogDAO blogDAO =daoFactory.getBlogDAO();
         List<Blog> userBlogs = blogDAO.getBlogsByUserId(user.getid());
 
-        // Transmettre les blogs à la page JSP
+       
         request.setAttribute("userBlogs", userBlogs);
         request.getRequestDispatcher("user-blogs.jsp").forward(request, response);
         

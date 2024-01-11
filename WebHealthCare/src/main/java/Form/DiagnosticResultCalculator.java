@@ -7,16 +7,13 @@ public class DiagnosticResultCalculator {
 
     public String calculateResult(Map<String, String[]> responses) {
         int totalScore = 0;
-
-        // Process each question and accumulate the scores
-        for (Map.Entry<String, String[]> entry : responses.entrySet()) {
+ for (Map.Entry<String, String[]> entry : responses.entrySet()) {
         	String questionId = entry.getKey();
             int questionIdInt = Integer.parseInt(questionId);
             String[] responseValues = entry.getValue();
             int questionScore = calculateQuestionScore(questionIdInt , responseValues);
             totalScore += questionScore;
         }
-        // Determine the result category based on the total score
         if (totalScore <= 10) {
             return "Low Risk";
         } else if (totalScore <= 20) {
@@ -39,15 +36,10 @@ public class DiagnosticResultCalculator {
 
         return totalScore;
     }
-    // Rest of the class...
-
+    
     private int calculateQuestionScore(int questionId, String[] responseValues) {
-        // Add your scoring logic here based on the specific questions and responses
-        // Modify this method according to your criteria
-    	int score = 0;
-    	
-        // Example scoring logic for some questions
-        switch (questionId) {
+       int score = 0;
+    	 switch (questionId) {
         case 1:
             // Example: +2 points for "Avant l'âge de 11 ans", +1 point for "À partir de 11 ans"
             if ("Avant l'age de 11 ans".equalsIgnoreCase(responseValues[0])) {

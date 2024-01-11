@@ -15,7 +15,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #D9EAFE; /* Arrière-plan rose clair */
+            background-color: #D9EAFE;
         }
 
         html {
@@ -38,18 +38,18 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
             display: flex;
-            align-items: center; /* Aligner les éléments verticalement */
+            align-items: center; 
         }
 
         .blog-image {
             max-width: 10%;
             height: auto;
             border-radius: 5px;
-            margin-right: 20px; /* Ajouter de l'espace entre l'image et le texte */
+            margin-right: 20px; 
         }
 
         .blog-info {
-            flex: 1; /* Prendre autant d'espace que possible */
+            flex: 1; 
         }
 
         .blog-title, .blog-description, .blog-creator {
@@ -57,11 +57,10 @@
         }
 
         .blog-creator {
-            margin-top: 10px; /* Ajouter de l'espace en haut du nom de l'auteur */
+            margin-top: 10px; 
         }
 
 
-        /* Ajoutez d'autres styles selon vos besoins */
     </style>
      <!-- Meta tags -->
     <meta charset="utf-8">
@@ -158,7 +157,7 @@
 <br>Date: ${comment.getDate()}</p>
   
                                     
-                                    <!-- Ajoutez d'autres détails du commentaire si nécessaire -->
+                                   
                                 </li>
                             </c:forEach>
                           </ul>
@@ -169,7 +168,7 @@
         </form>
                        
                         
-                        <!-- Ajoutez d'autres détails du blog si nécessaire -->
+                  
                     </div>
                 </li>
             </c:forEach>

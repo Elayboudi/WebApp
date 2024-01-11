@@ -12,17 +12,17 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="User.User" %>
 <%
-// Récupérer l'objet user depuis la session
+
 User user = (User) session.getAttribute("user");
 %>
 
 <%
-// Récupérez les données nécessaires depuis la session
+
 List<Questions> questions = (List<Questions>) session.getAttribute("questions");
 List<formulaire> responses = (List<formulaire>) session.getAttribute("responses");
 String diagnosticResult = (String) request.getAttribute("diagnosticResult");
 
-// Calculez le score total (s'il est nécessaire de l'afficher)
+
 DiagnosticResultCalculator resultCalculator = new DiagnosticResultCalculator();
 int totalScore = resultCalculator.calculateTotalScore(questions, responses);
 String resultCategory = resultCalculator.calculateResult(request.getParameterMap());

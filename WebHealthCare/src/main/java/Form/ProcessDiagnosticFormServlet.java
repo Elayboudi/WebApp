@@ -26,28 +26,20 @@ public class ProcessDiagnosticFormServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        // Get a DAOFactory instance
+        
         DAOFactory daoFactory = DAOFactory.getInstance();
-
-        // Get a QuestionsDAO instance
         QuestionsDAO questionsDAO = new QuestionsDaoImpl(daoFactory);
-
-        // Get questions with choices
-        List<Questions> questionsList = questionsDAO.getQuestionsWithChoices();
-
-        // Get a FormDAO instance
-        FormDAO formDAO = daoFactory.getFormDao();
-
-        // Get responses from the form
-        List<formulaire> responses = new ArrayList<>();
+List<Questions> questionsList = questionsDAO.getQuestionsWithChoices();
+ FormDAO formDAO = daoFactory.getFormDao();
+List<formulaire> responses = new ArrayList<>();
         for (Questions question : questionsList) {
-        	 String paramName = Integer.toString(question.getId_question());  // Utiliser l'ID de la question directement
+        	 String paramName = Integer.toString(question.getId_question()); 
         	    String[] values = request.getParameterValues(paramName);
 
         	    if (values != null && values.length > 0) {
         	        for (String value : values) {
         	            formulaire reponse = new formulaire();
-        	            reponse.setid_user(user.getid()); // Set the user ID
+        	            reponse.setid_user(user.getid()); 
         	            reponse.setid_question(question.getId_question());
         	            reponse.setresponse(value);
         	            responses.add(reponse);
@@ -55,10 +47,10 @@ public class ProcessDiagnosticFormServlet extends HttpServlet {
         	    }
         }
 
-        // Save responses in the database
+        
         formDAO.addResponse(responses);
 
-        // Calculate the diagnostic result and forward to a JSP page
+        
         DiagnosticResultCalculator resultCalculator = new DiagnosticResultCalculator();
         String result = resultCalculator.calculateResult(request.getParameterMap());
         List<Questions> updatedQuestions = questionsDAO.getQuestionsWithChoices();

@@ -29,12 +29,12 @@ public class DeleteBlogServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int blogId = Integer.parseInt(request.getParameter("blogId"));
 
-        // Supprimer le blog de la base de données
+       
         DAOFactory daoFactory = DAOFactory.getInstance();
         BlogDAO blogDAO = daoFactory.getBlogDAO();
         blogDAO.deleteBlog(blogId);
 
-        // Rediriger vers la page d'affichage des blogs de l'utilisateur
+        
         response.sendRedirect("UserBlogsServlet");
 	}
 

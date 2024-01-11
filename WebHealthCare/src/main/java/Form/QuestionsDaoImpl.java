@@ -18,9 +18,7 @@ public class QuestionsDaoImpl implements QuestionsDAO {
        
         this.responseChoicesDAO = daoFactory.getResponseChoicesDao();
     }
-    
-
-    // Méthode pour récupérer les questions avec les choix depuis la base de données
+  
     public List<Questions> getQuestionsWithChoices() {
         List<Questions> questionsList = new ArrayList<>();
 
@@ -34,9 +32,7 @@ public class QuestionsDaoImpl implements QuestionsDAO {
                 question.setQuestion(resultSet.getString("question"));
                 question.setId_mode(resultSet.getInt("id_mode"));
                 question.setHas_choices(resultSet.getBoolean("has_choices"));
-
-                // Si la question a des choix, récupérer les choix depuis la table response_choices
-                if (question.getHas_choices()) {
+  if (question.getHas_choices()) {
                     List<String> choices = responseChoicesDAO.getChoicesForQuestion(question.getId_question());
                     question.setChoices(choices);
                 }
@@ -45,14 +41,13 @@ public class QuestionsDaoImpl implements QuestionsDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Gérer les exceptions selon votre application
+           
         }
 
         return questionsList;
     }
 
    
-    // Méthode pour récupérer les choix depuis la table reponse_choices pour une question donnée
     private List<String> getChoicesForQuestion(int questionId) {
         List<String> choices = new ArrayList<>();
 
@@ -68,7 +63,7 @@ public class QuestionsDaoImpl implements QuestionsDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Gérer les exceptions selon votre application
+           
         }
 
         return choices;
@@ -92,7 +87,7 @@ public class QuestionsDaoImpl implements QuestionsDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Gérer les exceptions selon votre application
+            
         }
 
         return responseModes;

@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: #D9EAFE; /* Arrière-plan rose clair */
+            background: #D9EAFE; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -51,14 +51,14 @@
             left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            color: #FE96A0; /* Couleur de l'icône */
+            color: #FE96A0; 
             z-index: 1;
         }
 
         .icon-input input {
             width: 90%;
-            padding-left: 30px; /* Ajustez la marge gauche pour laisser de l'espace à l'icône */
-            border: 2px solid #FE96A0; /* Couleur de bordure de l'icône */
+            padding-left: 30px; 
+            border: 2px solid #FE96A0; 
             border-radius: 4px;
         }
 
@@ -66,25 +66,25 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            margin-top: 10px; /* Ajout de marges au-dessus du bouton Home */
+            margin-top: 10px; 
         }
 
         .btn, .home-btn {
             flex: 1;
-            background: #FE96A0; /* Couleur rose vive */
+            background: #FE96A0; 
             color: white;
             padding: 10px;
             border: none;
             border-radius: 5px;
             font-size: 18px;
             cursor: pointer;
-            text-decoration: none; /* Ajout de cette ligne pour enlever le soulignement du lien */
+            text-decoration: none; 
             display: inline-block;
             text-align: center;
         }
 
         .btn:hover, .home-btn:hover {
-            background: #FE96A0; /* Couleur rose foncé au survol */
+            background: #FE96A0; 
         }
     </style>
 </head>

@@ -11,14 +11,14 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #D9EAFE; /* Light blue background */
-            color: #333; /* Dark gray text color */
+            background-color: #D9EAFE; 
+            color: #333; 
             margin: 0;
         }
 
         h2 {
             margin: 20px;
-            color: #FE96A0; /* Pink heading color */
+            color: #FE96A0; 
         }
 
         ul {
@@ -27,7 +27,7 @@
         }
 
         li {
-            background: #C6DFFE; /* Light blue background for each blog */
+            background: #C6DFFE; 
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
@@ -54,7 +54,7 @@
         }
 
         .action-button {
-            background-color: #FE96A0; /* Pink button color */
+            background-color: #FE96A0; 
             color: white;
             border: none;
             padding: 10px;
@@ -66,7 +66,7 @@
         a.back-link {
             display: block;
             margin-top: 20px;
-            color: #FE96A0; /* Pink color for back link */
+            color: #FE96A0;
             text-decoration: none;
         }
     </style>
